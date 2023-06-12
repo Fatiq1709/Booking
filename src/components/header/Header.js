@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef ,useState } from 'react'
 import './header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from '@fortawesome/free-solid-svg-icons';
@@ -7,8 +7,12 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns'
 import { useNavigate } from 'react-router-dom';
+import Navigation from '../navigation/Navigation';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = ({type}) => {
+  const datePickerRef = useRef();
   const [destination, setDestination] = useState('');
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
@@ -36,33 +40,21 @@ const Header = ({type}) => {
 
    const handleSearch = ()=>{
     navigate('/hotels', { state:{destination,date,options}});
+
+
    }
+
+   useEffect(() => {
+    const handleDatePicker = e => { if (datePickerRef.current && !datePickerRef.current.contains(e.target)) setOpenDate(false) };
+    document.body.addEventListener('click', handleDatePicker);
+    return () => document.body.removeEventListener('click', handleDatePicker);
+  }, [])
+
 
   return (
     <div className='header'>
       <div className={type === 'list' ? 'headerContainer listMode' : 'headerContainer'}>
-        <div className='headerList'>
-          <div className='headerListItem active'>
-            <FontAwesomeIcon icon={faBed} />
-            <span>Stays</span>
-          </div>
-          <div className='headerListItem'>
-            <FontAwesomeIcon icon={faPlane} />
-            <span>Flights</span>
-          </div>
-          <div className='headerListItem'>
-            <FontAwesomeIcon icon={faCar} />
-            <span>Car rental</span>
-          </div>
-          <div className='headerListItem'>
-            <FontAwesomeIcon icon={faBed} />
-            <span>Attraction</span>
-          </div>
-          <div className='headerListItem'>
-            <FontAwesomeIcon icon={faTaxi} />
-            <span>Airport taxis</span>
-          </div>
-        </div>
+        <Navigation/>
         { type !== 'list' &&
           <>
         <h1 className='headerTitle'>A lifetime of discounts? It's Genius.</h1>
@@ -77,7 +69,7 @@ const Header = ({type}) => {
           </div>
           <div className='headerSearchItem'>
             <FontAwesomeIcon icon={faCalendarDays} className='headerIcon' />
-            <span onClick={()=>setOpenDate(!openDate)} className='headerSearchText'>{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(date[0].endDate, 'MM/dd/yyyy')}`}</span>
+            <span ref={datePickerRef} onClick={()=>setOpenDate(!openDate)} className='headerSearchText'>{`${format(date[0].startDate, 'MM/dd/yyyy')} to ${format(date[0].endDate, 'MM/dd/yyyy')}`}</span>
             {openDate &&<DateRange
               editableDateInputs={true}
               onChange={item => setDate([item.selection])}
@@ -129,6 +121,7 @@ const Header = ({type}) => {
           </div>
         </div></>}
       </div>
+      <ToastContainer/>
     </div>
   )
 }
