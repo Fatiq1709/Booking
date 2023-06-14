@@ -6,9 +6,9 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navigation from '../navigation/Navigation';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Header = ({type}) => {
@@ -39,7 +39,14 @@ const Header = ({type}) => {
    };
 
    const handleSearch = ()=>{
-    navigate('/hotels', { state:{destination,date,options}});
+    if(!(destination==''))
+    {
+      navigate('/hotels', { state:{destination,date,options}});
+    }
+    else{
+      toast.error("Fields can not be empty");
+    }
+    
 
 
    }
