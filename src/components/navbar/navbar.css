@@ -18,6 +18,20 @@
     font-weight: 500;
 }
 
+a{
+    color: white;
+    text-decoration: none;
+    outline-style: none;
+}
+
+a:hover{
+    color: white;
+    text-decoration: none;
+    outline-style: none;
+}
+
+
+
 .navButton{
     margin-left: 20px;
     border: none;
