@@ -46,7 +46,7 @@ const Navigation = () => {
             </Link>
           </div>
           <div className='headerListItem'>
-          <Link to='/#' onClick={(e)=>clickHandler(e)}>
+          <Link to='/attraction' onClick={(e)=>clickHandler(e)}>
             <FontAwesomeIcon icon={faBed} />
             <span>Attraction</span>
             </Link>
