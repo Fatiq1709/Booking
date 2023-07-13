@@ -3,8 +3,8 @@ import './App.css';
 import Home from './pages/home/Home';
 import List from './pages/list/List';
 import Hotel from './pages/hotel/Hotel';
-import PropertyList from './components/propertyList/PropertyList';
 import Attraction from './pages/attraction/Attraction';
+import Flight from './pages/flight/Flight';
 function App() {
   return (
    <BrowserRouter>
@@ -12,7 +12,7 @@ function App() {
     <Route path='/' element={<Home/>}/>
     <Route path='/hotels' element={<List/>}/>
     <Route path='/hotel' element={<Hotel/>}/>
-    <Route path='/property' element={<PropertyList/>}/>
+    <Route path='/flight' element={<Flight/>}/>
     <Route path='/attraction' element={<Attraction/>}/>
 
     

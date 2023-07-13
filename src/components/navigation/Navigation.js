@@ -34,7 +34,7 @@ const Navigation = () => {
             </Link>
           </div>
           <div className='headerListItem'>
-            <Link to='/property' onClick={(e)=>clickHandler(e)}>
+            <Link to='/flight' onClick={(e)=>clickHandler(e)}>
                 <FontAwesomeIcon icon={faPlane} />
                 <span>Flights</span>
             </Link>
