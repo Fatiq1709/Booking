@@ -1,7 +1,7 @@
 import React from 'react'
 import { faBed, faCar, faPlane, faTaxi } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  Link,NavLink } from 'react-router-dom';
+import {  Link, NavLink} from 'react-router-dom';
 import './navigation.css';
 
 const Navigation = () => {
@@ -33,7 +33,7 @@ const Navigation = () => {
             <span>Stays</span>
             </Link>
           </div>
-          <div className='headerListItem'>
+          <div className='headerListItem '>
             <Link to='/flight' onClick={(e)=>clickHandler(e)}>
                 <FontAwesomeIcon icon={faPlane} />
                 <span>Flights</span>

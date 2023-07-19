@@ -1,7 +1,7 @@
 import React, { useEffect, useRef ,useState } from 'react'
 import './header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from '@fortawesome/free-solid-svg-icons';
+import { faBed, faCalendarDays, faCar,  faPerson, faPlane, faTaxi  } from '@fortawesome/free-solid-svg-icons';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -51,11 +51,7 @@ const Header = ({type}) => {
 
    }
 
-   useEffect(() => {
-    const handleDatePicker = e => { if (datePickerRef.current && !datePickerRef.current.contains(e.target)) setOpenDate(false) };
-    document.body.addEventListener('click', handleDatePicker);
-    return () => document.body.removeEventListener('click', handleDatePicker);
-  }, [])
+   
 
 
   return (
